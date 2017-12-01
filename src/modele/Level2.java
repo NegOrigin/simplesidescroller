@@ -3,20 +3,31 @@ package modele;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javafx.scene.control.TextArea;
+
 public class Level2 extends Level {	
 	
-	public Level2(Hero hero) {
-		intro = "Bienvenue dans le niveau 2";
+	public Level2(Hero hero, TextArea textArea) {
+		intro = "Vous avez retrouvé une"+System.getProperty("line.separator")+
+				"première jambe !"+System.getProperty("line.separator")+
+				"Vous pouvez à présent"+System.getProperty("line.separator")+
+				"effectuer un petit saut"+System.getProperty("line.separator")+
+				"avec la touche A/Q."+System.getProperty("line.separator")+System.getProperty("line.separator")+System.getProperty("line.separator")+
+				"Appuyez sur espace pour"+System.getProperty("line.separator")+
+				"commencer.";
 		
 		this.hero = hero;
-		nextLevel = null;
+		this.textArea = textArea;
+		
+		nextLevel = new Level3(hero, textArea);
+		reward = new Leg();
 
 		String line1Raw = "    _, _ .                _ .                _, _ .                _ .                _, _ .               ";
 		String line2Raw = "   ( (  _ )_            (  _ )_             ( (  _ )_            (  _ )_             ( (  _ )_             ";
 		String line3Raw = " (_(_  _(_ ,)         (_  _(_ ,)          (_(_  _(_ ,)         (_  _(_ ,)          (_(_  _(_ ,)            ";
 		String line4Raw = "                                                                              |\\                           ";
 		String line5Raw = "                                                                              |_\\                          ";
-		String line6Raw = "__________________  ________________  _______  __________________  ___________|____________________________";
+		String line6Raw = "__________________  ________________  _______ ___________________  ___________|____________________________";
 		String line7Raw = "                                                                                                           ";
 		
 		line1 = new ArrayList<String>(Arrays.asList(line1Raw.split("")));
@@ -26,8 +37,6 @@ public class Level2 extends Level {
 		line5 = new ArrayList<String>(Arrays.asList(line5Raw.split("")));
 		line6 = new ArrayList<String>(Arrays.asList(line6Raw.split("")));
 		line7 = new ArrayList<String>(Arrays.asList(line7Raw.split("")));
-		
-		//letsTriple();
 		
 		level.add(line1);
 		level.add(line2);
